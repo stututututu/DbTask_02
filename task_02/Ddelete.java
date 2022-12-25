@@ -1,4 +1,7 @@
 import java.awt.GridLayout;
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,7 +12,8 @@ import javax.swing.border.EmptyBorder;
 
 public class Ddelete {
 
-	public Ddelete() {
+
+	public Ddelete(String data) {
 		// TODO Auto-generated constructor stub
 		JFrame jf = new JFrame();
 		jf.setLayout(new GridLayout(2,1));
@@ -24,7 +28,7 @@ public class Ddelete {
 		JLabel jlDelnum = new JLabel("삭제할 번호:");
 		JTextField jtNum = new JTextField();
 		
-		JButton jbDel = new JButton("추가");
+		JButton jbDel = new JButton("삭제");
 		
 		jpTop.add(jlDelnum);
 		jpTop.add(jtNum);
@@ -33,6 +37,34 @@ public class Ddelete {
 		
 		jf.add(jpTop);
 		jf.add(jpBottom);
+		
+		jbDel.addActionListener(e ->{
+			
+		String Tnum = jtNum.getText();
+		
+		
+		String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
+				+ "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
+
+		String id = "root";
+		String pw = "1234";
+		
+		
+		try {
+			Connection con = DriverManager.getConnection(url, id, pw);
+			System.out.println("connecting succeed");
+			Statment stmt = con.createStatement();
+			stmt.executeUpdate("DELETE FROM "+data+" WHERE [조건식];");
+			
+		} catch (Exception e2) {
+				// TODO: handle exception
+			e2.printStackTrace();	
+			System.out.println("error");
+		}
+			
+			
+		});
+		
 		
 		jf.setVisible(true);
 	}

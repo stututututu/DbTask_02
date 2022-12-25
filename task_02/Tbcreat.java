@@ -3,8 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Tbcreat {
-private String data;
-private String Dbname;
+
 		public Tbcreat(String data, String Dbname) {
 			// TODO Auto-generated constructor stub
 			String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"

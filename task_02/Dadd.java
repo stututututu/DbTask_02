@@ -1,6 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,7 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class Dadd {
-	public Dadd() {
+
+	public Dadd(String data, String Dbname) {
 		// TODO Auto-generated method stub
 		JFrame jf = new JFrame();
 		jf.setLayout(new GridLayout(2,1));
@@ -44,6 +48,33 @@ public class Dadd {
 
 		jf.add(jpCenter);
 		jf.add(jpbottm, BorderLayout.SOUTH);
+		
+		jbAdd.addActionListener(e -> {
+			String DName = jtName.getText();
+			String DAdress = jtAdress.getText();
+			String DPhonenum = jtPhonenum.getText();
+			int num = 0;
+			num =+ 1;
+			
+			String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
+					+ "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
+
+			String id = "root";
+			String pw = "1234";
+			
+			try {
+				Connection con = DriverManager.getConnection(url, id, pw);
+				System.out.println("connecting succeed");
+				Statement stmt = con.createStatement();
+				stmt.executeUpdate("\"INSERT INTO `"+Dbname+"`.`"+data+"` (`num`, `name`, `adress`, `phonenum`) VALUES (`"+num+"`, `"+DName+"`, `"+DAdress+"`, `"+DPhonenum+"`);");
+				System.out.println("Drop table");
+				
+			} catch (Exception e1) {
+				// TODO: handle exception
+				e1.printStackTrace();
+				System.out.println("error");  
+				}
+		});
 
 		jf.setVisible(true);
 

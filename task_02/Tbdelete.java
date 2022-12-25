@@ -4,8 +4,7 @@ import java.sql.DriverManager;
 
 public class Tbdelete {
 	
-	private String data;
-	public Tbdelete(String data) {
+	public Tbdelete(String data, String Dbname) {
 		// TODO Auto-generated constructor stub
 		String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
 				+ "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
@@ -23,7 +22,6 @@ public class Tbdelete {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			System.out.println("error");
-		}
+			System.out.println("error");  
 	}
 }

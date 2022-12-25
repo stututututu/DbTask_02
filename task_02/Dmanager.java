@@ -7,7 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class Dmanager {
-	public Dmanager() {
+
+	public Dmanager(String data, String Dbname) {
 		// TODO Auto-generated method stub
 		JFrame jf = new JFrame();
 		jf.setSize(300,400);
@@ -30,10 +31,10 @@ public class Dmanager {
 		jf.add(jpMain);
 		
 		jbDadd.addActionListener(e -> {
-			new Dadd();
+			new Dadd(data, Dbname);
 		});
 		jbDdelete.addActionListener(e -> {
-			new Ddelete();
+			new Ddelete(data);
 		});
 		jbDchange.addActionListener(e -> {
 			new Dchange();

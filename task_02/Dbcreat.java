@@ -5,13 +5,11 @@ import java.sql.Statement;
 
 
 public class Dbcreat {
-	private String data;
-	private String Dbname;
-	
-	public Dbcreat(String data,String Dbname) {
+
+	public Dbcreat(String data, String Dbname) {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	private void Dbcreat() {
 		// TODO Auto-generated method stub
 		String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"

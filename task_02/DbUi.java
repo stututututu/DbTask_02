@@ -58,11 +58,14 @@ private String data;
 		});
 		jbTbdelete.addActionListener(e -> {
 			data = jtAdd.getText();
-			new Tbdelete();
+			String Dbname = data;	
+			new Tbdelete(data, Dbname);
 			
 		});
 		jbDmanager.addActionListener(e -> {
-			new Dmanager();
+			data = jtAdd.getText();
+			String Dbname = data;
+			new Dmanager(data, Dbname);
 		});
 		jbClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
