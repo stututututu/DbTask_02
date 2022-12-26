@@ -1,10 +1,17 @@
 import java.awt.GridLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import java.sql.ResultSetMetaData;
 
 public class Dmanager {
 
@@ -38,6 +45,34 @@ public class Dmanager {
 		});
 		jbDchange.addActionListener(e -> {
 			new Dchange(data, Dbname);
+		});
+		jbDview.addActionListener(e -> {
+			String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
+					+ "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
+
+			String id = "root";
+			String pw = "1234";
+			
+			try {			
+				Connection con = DriverManager.getConnection(url, id, pw);
+				Statement stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * from "+data+";");
+				java.sql.ResultSetMetaData rsmd = rs.getMetaData();
+				System.out.println("getData");
+				
+				while (rs.next()) {
+					for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+						System.out.print(rs.getObject(i) + " ");
+					}
+					System.out.println();
+				}
+
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				System.out.println("getData error");
+				e1.printStackTrace();
+			}
+
 		});
 		
 		
