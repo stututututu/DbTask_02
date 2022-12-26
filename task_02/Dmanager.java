@@ -34,11 +34,12 @@ public class Dmanager {
 			new Dadd(data, Dbname);
 		});
 		jbDdelete.addActionListener(e -> {
-			new Ddelete(data);
+			new Ddelete(data, Dbname);
 		});
 		jbDchange.addActionListener(e -> {
-			new Dchange();
+			new Dchange(data, Dbname);
 		});
+		
 		
 		jf.setVisible(true);
 

@@ -1,6 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class Dchange {
-	public Dchange() {
+	public Dchange(String data, String Dbname) {
 		// TODO Auto-generated constructor stub
 		JFrame jf = new JFrame();
 		jf.setSize(300,300);
@@ -50,7 +53,34 @@ public class Dchange {
 		jf.add(jpCenter,BorderLayout.CENTER);
 		jf.add(jpBottom,BorderLayout.SOUTH);
 		
+		jbAdd.addActionListener(e -> {
+			
+			String Cnum = jtCnum.getText();			
+			String Cname = jtName.getText();			
+			String Cadress = jtAdress.getText();			
+			String Cphonenum = jtPhonenum.getText();	
+			
+			String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
+					+ "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
+
+			String id = "root";
+			String pw = "1234";
+			
+			try {
+				Connection con = DriverManager.getConnection(url, id, pw);
+				System.out.println("connecting succeed");
+				Statement stmt = con.createStatement();
+				stmt.executeLargeUpdate("UPDATE `"+Dbname+"`.`"+data+"` SET `name` = '" + Cname + "', `address` = '" + Cadress
+						+ "', `phonenum` = '" + Cphonenum + "' WHERE (`num` = '" + Cnum + "');");
+				System.out.println("update succeed");
+			} catch (Exception e2) {
+				// TODO: handle exception
+				e2.printStackTrace();
+				System.out.println("error");
+			}
+		});
 		
 		jf.setVisible(true);
 	}
 }
+  

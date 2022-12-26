@@ -20,6 +20,7 @@ public class Tbcreat {
 						+ "num INT NOT NULL,\r\n"
 						+ "name VARCHAR(45) NULL,\r\n"
 						+ "adress VARCHAR(45) NULL,\r\n"
+						+ "phonenum VARCHAR(45) NULL,\r\n"
 						+ "PRIMARY KEY (num))");
 				System.out.println("creat table");
 				

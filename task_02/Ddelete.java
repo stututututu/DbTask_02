@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 public class Ddelete {
 
 
-	public Ddelete(String data) {
+	public Ddelete(String data, String Dbname) {
 		// TODO Auto-generated constructor stub
 		JFrame jf = new JFrame();
 		jf.setLayout(new GridLayout(2,1));
@@ -54,7 +54,7 @@ public class Ddelete {
 			Connection con = DriverManager.getConnection(url, id, pw);
 			System.out.println("connecting succeed");
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("DELETE FROM "+data+" WHERE [조건식];");
+			stmt.executeUpdate("DELETE FROM `"+Dbname+"`.`"+data+"` WHERE (`num` = '" + Tnum + "');");
 			
 		} catch (Exception e2) {
 				// TODO: handle exception

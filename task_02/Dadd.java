@@ -66,7 +66,7 @@ public class Dadd {
 				Connection con = DriverManager.getConnection(url, id, pw);
 				System.out.println("connecting succeed");
 				Statement stmt = con.createStatement();
-				stmt.executeUpdate("\"INSERT INTO `"+Dbname+"`.`"+data+"` (`num`, `name`, `adress`, `phonenum`) VALUES (`"+num+"`, `"+DName+"`, `"+DAdress+"`, `"+DPhonenum+"`);");
+				stmt.executeUpdate("INSERT INTO `"+Dbname+"`.`"+data+"` (`num`, `name`, `adress`, `phonenum`) VALUES (`"+num+"`, `"+DName+"`, `"+DAdress+"`, `"+DPhonenum+"`);");
 				System.out.println("Drop table");
 				
 			} catch (Exception e1) {

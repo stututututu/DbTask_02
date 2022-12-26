@@ -16,7 +16,7 @@ public class Tbdelete {
 			Connection con = DriverManager.getConnection(url, id, pw);
 			System.out.println("connecting succeed");
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("DROP TABLE"+data+";");
+			stmt.executeUpdate("DROP TABLE  if exists `"+Dbname+"`.`"+data+"`;");
 			System.out.println("Drop table");
 			
 		} catch (Exception e) {
