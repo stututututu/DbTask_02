@@ -1,4 +1,4 @@
-import java.beans.Statement;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -23,5 +23,6 @@ public class Tbdelete {
 			// TODO: handle exception
 			e.printStackTrace();
 			System.out.println("error");  
+		}
 	}
 }

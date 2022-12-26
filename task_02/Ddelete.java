@@ -1,7 +1,7 @@
 import java.awt.GridLayout;
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -53,7 +53,7 @@ public class Ddelete {
 		try {
 			Connection con = DriverManager.getConnection(url, id, pw);
 			System.out.println("connecting succeed");
-			Statment stmt = con.createStatement();
+			Statement stmt = con.createStatement();
 			stmt.executeUpdate("DELETE FROM "+data+" WHERE [조건식];");
 			
 		} catch (Exception e2) {

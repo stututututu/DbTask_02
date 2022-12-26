@@ -1,10 +1,10 @@
-import java.beans.Statement;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Dbdelete {
 
-	public Dbdelete(String data, String Dbname) {
+	public Dbdelete(String Dbname) {
 		// TODO Auto-generated constructor stub
 		String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
 				+ "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
@@ -16,7 +16,7 @@ public class Dbdelete {
 			Connection con = DriverManager.getConnection(url, id, pw);
 			System.out.println("connecting succeed");
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("DROP SCHEMA IF EXISTS"+Dbname+";");
+			stmt.executeUpdate("DROP databases `"+Dbname+"`");
 			System.out.println("Drop DB");
 			
 		} catch (Exception e) {

@@ -38,16 +38,14 @@ private String data;
 
 		jf.add(jpMain);
 
-		jbDbcreat.addActionListener(e -> {
-			data = jtAdd.getText();
-			String Dbname = data;
-			new Dbcreat(data, Dbname);
+		jbDbcreat.addActionListener(e -> {		
+			String Dbname = jtAdd.getText();
+			new Dbcreat(Dbname);
 
 		});
 		jbDbdelete.addActionListener(e -> {
-			data = jtAdd.getText();
-			String Dbname = data;
-			new Dbdelete(data, Dbname);
+			String Dbname = jtAdd.getText();
+			new Dbdelete(Dbname);
 			
 		});
 		jbTbcreat.addActionListener(e -> {

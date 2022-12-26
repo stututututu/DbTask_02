@@ -6,11 +6,8 @@ import java.sql.Statement;
 
 public class Dbcreat {
 
-	public Dbcreat(String data, String Dbname) {
-		// TODO Auto-generated constructor stub
-	}
 	
-	private void Dbcreat() {
+	public Dbcreat(String Dbname) {
 		// TODO Auto-generated method stub
 		String url = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
 				+ "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
